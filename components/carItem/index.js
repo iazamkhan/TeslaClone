@@ -9,34 +9,43 @@ import {
 import StyledButton from '../StyledButton';
 
 const CarItem = (props) => {
+
+    const { name, tagline, taglineCTA, image } = props;
+
     return (
         <View style={styles.carContainer}>
             <ImageBackground
-                source={require('../../assets/img/ModelS.jpeg')}
+                source={image}
                 style={styles.image}
             >
                 <View style={styles.titles}>
                     <Text style={styles.title}>
-                        Model S
+                        {name}
                     </Text>
                     <Text style={styles.subtitle}>
-                        Starting at $69,420
+                        {tagline}
+                        {' '}
+                        <Text style={styles.subtitleCTA}>
+                        {taglineCTA}
+                    </Text>
                     </Text>
                 </View>
-                <StyledButton 
-                type="primary"
-                content={"Custom Order"}
-                onPress={() => { 
-                    console.warn("Custom Order was pressed");
-                }}
-                />
-                <StyledButton 
-                type="secondary"
-                content={"Existing Inventory"}
-                onPress={() => { 
-                    console.warn("Existing Inventory was pressed");
-                }}
-                />
+                <View style={styles.buttonsContainer}>
+                    <StyledButton
+                        type="primary"
+                        content={"Custom Order"}
+                        onPress={() => {
+                            console.warn("Custom Order was pressed");
+                        }}
+                    />
+                    <StyledButton
+                        type="secondary"
+                        content={"Existing Inventory"}
+                        onPress={() => {
+                            console.warn("Existing Inventory was pressed");
+                        }}
+                    />
+                </View>
             </ImageBackground>
         </View>
     )
@@ -60,11 +69,17 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#5c5e62',
     },
+    subtitleCTA: {
+        textDecorationLine: 'underline',
+    },
     image: {
         height: '100%',
         weight: '100%',
         resizeMode: 'cover',
     },
+    buttonsContainer: {
+        marginTop: '80%',
+    }
 });
 
 export default CarItem;
