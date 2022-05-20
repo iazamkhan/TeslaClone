@@ -1,5 +1,6 @@
 import React from 'react';
 import CarsList from './components/carsList';
+import Header from './components/Header';
 import {
   StatusBar,
   View,
@@ -10,6 +11,7 @@ function App() {
 
   return (
     <View style={styles.container}>
+      <Header />
       <CarsList />
       <StatusBar style="auto" />
     </View>

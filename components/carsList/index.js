@@ -3,6 +3,7 @@ import {
     View,
     FlatList,
     StyleSheet,
+    Dimensions,
 } from 'react-native';
 
 import cars from './cars';
@@ -15,15 +16,19 @@ const CarsList = (props) => {
             <FlatList
                 data={cars}
                 renderItem={({ item }) => <CarItem car={item} />}
+                decelerationRate={'fast'}
+                snapToAlignment={'start'}
+                snapToInterval={Dimensions.get('window').height}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-  container: {
-      width: '100%',
-  }
+    container: {
+        width: '100%',
+    }
 });
 
 export default CarsList;
